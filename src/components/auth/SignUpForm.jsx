@@ -2,7 +2,7 @@
 import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
-import {  EyeCloseIcon, EyeIcon } from "@/icons";
+import { EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Bounce, ToastContainer, toast } from 'react-toastify';
@@ -11,11 +11,8 @@ import { registerUser } from "../../Services/authService"
 import Loading from "../ui/loader/Loading";
 export default function SignUpForm() {
   const router = useRouter();
-  const role = localStorage.getItem("superadmin")
-  console.log("signuprole", role)
-  if (role !== "superadmin") {
-    router.push("/NotFound")
-  }
+
+
 
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -27,6 +24,15 @@ export default function SignUpForm() {
     passward: '',
   });
 
+  useEffect(() => {
+    const usre = async () => {
+      const role = await localStorage.getItem("superadmin")
+      if (role !== "superadmin") {
+        router.push("/NotFound")
+      }
+    }
+    usre()
+  }, [])
   const handleChange = () => {
     setForm({ ...formdata, [e.target.name]: e.target.value });
   };
