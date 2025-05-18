@@ -25,7 +25,7 @@ export default function Storyform() {
   const [catagory, AllCatagory] = useState([])
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [voice, setVoicefile] = useState()
- const [ working , setIsworking] =useState(false)
+  const [working, setIsworking] = useState(false)
   const handleSwitchChange = (checked) => {
     if (checked) {
       setMediaDropBox(true)
@@ -90,24 +90,24 @@ export default function Storyform() {
       if (resp?.status === 201) {
         console.log("ho gya")
         clear()
-         setIsworking(false)
+        setIsworking(false)
       }
     } catch (error) {
       console.log("ni hua", error)
     }
 
   }
-  
-    const clear = () => {
-      console.log("before", title)
-      setTitle("")
-      setVoicefile("")
-      setContent("")
-      setSelectedTags([])
-      setSelectedCategories([])
-      setMediaDropBox(false)
-      console.log("after", title)
-    }
+
+  const clear = () => {
+    console.log("before", title)
+    setTitle("")
+    setVoicefile("")
+    setContent("")
+    setSelectedTags([])
+    setSelectedCategories([])
+    setMediaDropBox(false)
+    console.log("after", title)
+  }
   return (
     <div>
       <ComponentCard className="py-10">
@@ -120,6 +120,7 @@ export default function Storyform() {
         <div className="ck-content prose">
           <Label>Enter Your story</Label>
           <CkEditorClient
+            editable={true}
             value={content}
             onChange={(data) => setContent(data)}
           />
@@ -136,14 +137,14 @@ export default function Storyform() {
         </div>
         {showmeidadropbox ? <DropzoneComponent setVoicefile={setVoicefile} /> : ""} */}
 
-        
+
         <div >
           <Label>Select Tags For Your Story</Label>
-          <MultipleSelect items={Tags} onChange={setSelectedTags} value={selectedTags} />
+          <MultipleSelect editable={true} items={Tags} onChange={setSelectedTags} value={selectedTags} />
         </div>
         <div >
           <Label>Select Catagory For Your Story</Label>
-          <MultipleSelect items={catagory} onChange={setSelectedCategories} value={selectedCategories} />
+          <MultipleSelect editable={true} items={catagory} onChange={setSelectedCategories} value={selectedCategories} />
         </div>
       </ComponentCard>
       <div className="flex justify-center items-center my-10">

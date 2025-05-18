@@ -8,16 +8,19 @@ export default function MultipleSelect({ items, value, onChange, editable }) {
 
     const [mounted, setMounted] = useState(false);
 
-    // useEffect(() => {
-    //     setMounted(true);
-    // }, []);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
-    // if (!mounted) return null;
-    // const multipleselect = items?.map(tag => ({
-    //     value: tag._id,
-    //     label: tag.name,
-    // }));
+    if (!mounted) return null;
 
+
+    const multipleselect = Array.isArray(items)
+        ? items.map(tag => ({
+            value: tag._id,
+            label: tag.name,
+        }))
+        : [];
     const handleChange = (selected) => {
         if (selected.length <= 3) {
             onChange(selected);
@@ -109,7 +112,7 @@ export default function MultipleSelect({ items, value, onChange, editable }) {
     };
     return (
         <>
-            {/* <ToastContainer
+            <ToastContainer
                 position="bottom-center"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -129,10 +132,11 @@ export default function MultipleSelect({ items, value, onChange, editable }) {
                 defaultValue={0}
                 value={value}
                 options={multipleselect}
+                placeholder="Select Any"
                 styles={colourStyles}
                 width={"100%"}
                 onChange={handleChange}
-            /> */}
+            />
         </>
     )
 }

@@ -24,7 +24,7 @@ export const GetAllTags = async ()=>{
         return data;
     } catch (error) {
         console.error("Error fetching Catagory", error);
-        return null
+        return []
     }
   }
 

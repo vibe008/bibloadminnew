@@ -17,6 +17,7 @@ export default function AddTags() {
     const [title, setTitle] = useState("")
     const [Tags, AllTags] = useState([])
     const [added, setadded] = useState(false)
+    
     useEffect(() => {
         try {
             const getAllTags = async () => {
@@ -33,6 +34,7 @@ export default function AddTags() {
             console.log("get catagory error", error)
         }
     }, [added])
+
     const HandleTagAdd = async () => {
         try {
             if (!title.trim()) {
@@ -59,7 +61,7 @@ export default function AddTags() {
     }
     return (
         <>
-            <div className=' bg-amber-200 '>
+            <div className=' '>
                 <ToastContainer
                     position="bottom-center"
                     autoClose={5000}

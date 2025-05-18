@@ -164,7 +164,7 @@ export default function BasicTableOne({ tabletitles, catagory, setadded, added, 
             </TableHeader>
             {/* Table Body */}
             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-              {[...catagory].reverse().map((item, index) => (
+              {Array.isArray(catagory) && [...catagory].reverse().map((item, index) => (
                 <TableRow key={index}>
                   <TableCell className="px-5 py-4 sm:px-6 text-start">
                     <div className="flex items-center gap-3">
