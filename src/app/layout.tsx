@@ -20,7 +20,7 @@ export default function RootLayout({
   useEffect(() => {
     const userRole = localStorage.getItem('superadmin');
     console.log("userRole",userRole)
-  }, []);
+  }, [loading]);
   // console.log("rolelayout",role)
   useEffect(() => {
     const checkUser = async () => {
