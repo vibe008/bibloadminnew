@@ -4,7 +4,7 @@ import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
 import { EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { registerUser } from "../../Services/authService"
